@@ -1,0 +1,79 @@
+body{
+    background-color: wheat;
+}
+
+.buttons{
+    margin-top: -500px;
+}
+
+#redButton{
+    width: 120px;
+    height: 120px;
+    color: white;
+    background-color: red;  
+    margin-left: 30px;
+    margin-top: 190px;
+    border-radius:10px;
+    cursor:pointer;
+
+
+}
+#yellowButton{
+    width: 120px;
+    height: 120px;
+    color: white;
+    background-color: yellow;  
+    margin-left: 55px;
+    margin-top: 30px;
+    border-radius:10px;
+    cursor:pointer;
+
+
+}
+
+#greenButton{
+    width: 120px;
+    height: 120px;
+    color: white;
+    background-color: green;  
+    margin-left: 200px;
+    margin-top: 30px;
+    border-radius:10px;
+    cursor:pointer;
+
+
+
+}
+
+#blueButton{
+    width: 120px;
+    height: 120px;
+    color: white;
+    background-color: blue;  
+    margin-left: 200px;
+    margin-top: 30px;
+    border-radius:10px;
+    cursor:pointer;
+
+
+
+}
+
+.blue{
+    margin-top: -320px;
+}
+
+.green{
+    margin-top: 180px;
+}
+
+.rec{
+    border-radius:15px;
+    background-color: black;
+}
+
+.theGame{
+    margin-top: 3%;
+    margin-left: 30%;
+}
+

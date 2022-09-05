@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="A-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--==Ttitle=============-->
+  <title>MCG</title>
+    <link rel="icon" type="image/x-icon" href="bg_menu.jpg">
+  <!--==CSS=============-->
+
+  <link rel="stylesheet" type="text/css" href="game.css"/>
+
+
+</head>
+
+<body>
+  <video autoplay muted loop id="myVideo">
+    <source src="video.mp4" type="video/mp4">
+  </video>
+
+  <div class="content">
+    <input id="userName" type="text" name="User Name"  placeholder="שם משתמש" aria-required="true"
+      style="margin-bottom: 50px; margin-top: 50px; margin-right: 600px; direction: rtl;   border-radius: 10px; height: 40px; border-color:aqua; text-align: center;"></input>
+      <br>
+      <input id="ifExist" type="text" name="ifExist"  placeholder="משתמש חדש / משתמש קיים (הקלד חדש / קיים)"  aria-required="true" style="margin-top: 20px; margin-bottom: 50px; margin-right: 560px; direction: rtl;   border-radius: 10px; height: 40px; border-color:aqua; text-align: center;" ></input>
+
+      <!-- <input type="radio" name="userNameRadio" id="1" style="direction: rtl; margin-bottom: 50px; margin-right: 640px; " aria-required="true" checked>משתמש קיים</input> -->
+    <br>
+    <!-- <input type="radio" name="userNameRadio" id="2" style="direction: rtl; margin-bottom: 50px; margin-right: 640px; " aria-required="true">משתמש חדש</input> -->
+    <br>
+    <button id="send" style="margin-bottom: 50px; margin-right: 640px; border-radius: 10px; width: 100px; height: 40px; border-color:aqua;" onclick="getUser()">שליחה</button>
+  </div>
+
+
+
+  <!-- <script type="module" src="../enterUser.js"></script> -->
+  <script type="module" src="JS/enterUser.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  
+
+</body>
+
+</html>

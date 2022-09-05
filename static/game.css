@@ -1,0 +1,35 @@
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+  
+  /* Add some content at the bottom of the video/page */
+  .content {
+    position: fixed;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+    direction: rtl; 
+  }
+
+  #ifExist{
+    width: 255px;
+    background-color: rgb(125, 209, 205);
+  }
+
+  #userName{
+    background-color: rgb(105, 204, 199);
+
+  }
+
+  ::placeholder{
+    color: rgb(100, 99, 99);
+    text-shadow: rgb(129, 129, 129);
+    font-style: oblique;
+  }
+  

@@ -1,0 +1,63 @@
+body {
+    background-image: url("bg_menu1.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    
+  }
+
+#button1 {
+   margin-top: 470px;
+   margin-left: 550px;
+   width: 200px;
+   height: 100px;
+   font-size: 30px;
+   border: 0px;
+   border-radius: 75%;
+   font-family:Arial, Helvetica, sans-serif;
+   background-color: red;
+   animation-name: title;
+   animation-duration: 2s;
+   animation-iteration-count: infinite;
+   transition: all 0.5s;
+   cursor: pointer;
+   border-color: black;
+   border-width: 10px;
+
+}
+
+#button1 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#button1 span:after {
+  content: '\00ab';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -75px;
+  transition: 0.5s;
+  right: 0;
+}
+
+#button1:hover span {
+  padding-left: 25px;
+}
+
+#button1:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+@keyframes title {
+  0% {background-color:rgb(201, 57, 57);}
+  25% {background-color:rgb(201, 57, 57);}
+  50% {background-color:yellow;}
+  75% {background-color:rgb(86, 218, 86);}
+  100% {background-color:rgb(55, 55, 196);}
+  
+}
+
