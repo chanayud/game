@@ -161,7 +161,6 @@ async function compareFunction(numOfColor) {
                 flag=false;
                 let audio = new Audio('lost.wav');
                 audio.play();
-                await new Promise(r => setTimeout(r, 900));
                 document.getElementById("life").innerHTML = life + " ";
                 if (life < 0){
                     let highScoreFromServer = await axios.get('/api/get-high-score',  { params: { userName: userName }});
