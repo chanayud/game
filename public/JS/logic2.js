@@ -1,8 +1,5 @@
 var para = new URLSearchParams(window.location.search);
 var highScore = para.get("highScore");
-console.log(highScore);
-//  var userName = para.get("userName");
-
 var canvasColor;
 var x, y, radius, color;
 var x = 50,
@@ -14,24 +11,8 @@ var steps = 0,
     escaped = 0;
 var batonMovement = 200;
 
-
- async function getText() {
-    // let highScoreFromServer = await axios.get('/api/get-high-score', userName);
-    // if(highScoreFromServer< highScore){
-    //     let obj = {name: userName, highScore: highScore};
-    //     await axios.post('/api/update-high-score', obj);
-    }
-  //  var myText = localStorage.getItem("highScore");
-   // var userName = localStorage.getItem("name");
-   // if(myText>= pass)
-    //  pass= myText;
-   // else{
-   //     localStorage.setItem("highScore", pass);
-   // }
-//   }
-
+//the function of the high-score screen
 function startGame() {  
-  //  getText();
     let audio = new Audio('gameOver.mp3');
     audio.play();
     var r, g, b;
@@ -101,11 +82,6 @@ function clearScreen() {
     pen.fillStyle = canvasColor;
     pen.fillRect(0, 0, 450, 300);
 }
-
-// document.getElementById("newGame").onclick = function () {
-//     location.href = "theGame.html" ;//קישור לדף המשחק
-// }
-
 
 
 

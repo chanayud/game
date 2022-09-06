@@ -13,7 +13,6 @@ const httpsAgent = new https.Agent({rejectUnauthorized: false});
 const express = require('express')
 const app = express()
 app.use(express.static('static'))
-//app.use(express.static(__dirname));
 app.use(express.static(__dirname + '/public'));
 
 
@@ -29,39 +28,37 @@ const PORT = process.env.PORT || 3001
 app.listen(PORT)
 console.log("server is listening in port 3001")
 
-
 app.use(express.json());
 app.get('/api/get-user-name', (req, res) => {
     for(let i=0; i<items.length; i++){
-        if(items[i].name == req.body)
-        res.send("Exists");
+        if(items[i].name == req.query.userName){
+            res.send("Exists");
+        }
     }
-    console.log(items);
     res.send("NotExists");
 });
-
+app.use(express.json());
 app.get('/api/get-high-score', (req, res) => {
     for(let i=0; i<items.length; i++){
-        if(items[i].name == req.body)
-        res.send(items[i].highScore);
+        if(items[i].name == req.query.userName){
+        res.send(""+items[i].highScore);
+        }
     }
-    res.send("0");
 });
 
 app.use(express.json());
 app.post('/api/update-new-user', (req, res) => {
- //   items[items.length].name = req.body.name;
- //   items[items.length].highScore = req.body.highScore;
     items.push(req.body);
-    console.log(items);
     res.send("200 ok");
 });
 
 app.post('/api/update-high-score', (req, res) => {
     for(let i=0; i<items.length; i++){
-        if(items[i].name == req.body.name)
+        if(items[i].name == req.body.name){
             items[i].highScore = req.body.highScore;
             break;
+        }
+
     }
     res.send("200 ok");
 });

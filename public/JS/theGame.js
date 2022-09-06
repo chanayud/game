@@ -18,25 +18,24 @@ document.getElementById("start").onclick = function () {
 };
 document.getElementById("redButton").onclick = function () { if (counter != 0) compareFunction(1) };
 
+//the visually function of the red button
 async function redFunction() {
     let audio = new Audio('red.mp3');
     audio.play();
-    console.log("red");
     const btn = document.getElementById('redButton');
     btn.style.backgroundColor = '#ff6666';
     btn.style.color = 'black';
     await new Promise(r => setTimeout(r, 500));
     btn.style.backgroundColor = 'red';
     btn.style.color = 'white';
-
 };
 
 document.getElementById("blueButton").onclick = function () { if (counter != 0) compareFunction(2) };
 
+//the visually function of the blue button
 async function blueFunction() {
     let audio = new Audio('blue.mp3');
     audio.play();
-    console.log(" blue");
     const btn = document.getElementById('blueButton');
     btn.style.backgroundColor = '#66ccff';
     btn.style.color = 'black';
@@ -47,10 +46,10 @@ async function blueFunction() {
 
 document.getElementById("yellowButton").onclick = function () { if (counter != 0) compareFunction(3) };
 
+//the visually function of the yellow button
 async function yellowFunction() {
     let audio = new Audio('yellow.mp3');
     audio.play();
-    console.log(" yellow");
     const btn = document.getElementById('yellowButton');
     btn.style.backgroundColor = '#ffff99';
     btn.style.color = 'black';
@@ -61,31 +60,28 @@ async function yellowFunction() {
 
 document.getElementById("greenButton").onclick = function () { if (counter != 0) compareFunction(4) };
 
+//the visually function of the green button
 async function greenFunction() {
     let audio = new Audio('green.mp3');
     audio.play();
-    console.log("green")
     const btn = document.getElementById('greenButton');
     btn.style.backgroundColor = '#99ff99';
     btn.style.color = 'black';
     await new Promise(r => setTimeout(r, 500));
     btn.style.backgroundColor = 'green';
     btn.style.color = 'white';
-
 };
 
+//the infinity loop of the game that shown the sequence of the colors
 async function theLoopGameFunction() {
     await new Promise(r => setTimeout(r, 700));
     let theRandomNumber = Math.floor(Math.random() * 4) + 1;
-    console.log(numLength);
     index[numLength] = theRandomNumber;
-    console.log(index.length);
     loop();
     
 }
 async function loop() {
     for (let i = 0; i <= numLength; i++) {
-        console.log(index[i]);
         if (index[i] == 1) {
             redFunction();
             await new Promise(r => setTimeout(r, 700));
@@ -105,6 +101,8 @@ async function loop() {
         }
     }
 }
+
+//a function to check if the button that the user pressed is the right button
 async function compareFunction(numOfColor) {
 
     if (numOfColor == 1) {
@@ -124,6 +122,7 @@ async function compareFunction(numOfColor) {
         greenFunction();
         await new Promise(r => setTimeout(r, 500));
     }
+    //if there is more color in the sequence
     if (pointer < numLength) {
         if (numOfColor == index[pointer]) {
             pointer++;
@@ -136,13 +135,12 @@ async function compareFunction(numOfColor) {
                 await new Promise(r => setTimeout(r, 900));
                 document.getElementById("life").innerHTML = life + " ";
                 pointer = 0;
-                console.log("yey")
                 loop();
             }
-            else {        console.log("hi i'm here");
+            else {     
 
-
-                let highScoreFromServer = await axios.get('/api/get-high-score', userName);
+                //an API call to get the exist high-score of this user
+                var highScoreFromServer = await axios.get('/api/get-high-score',  { params: { userName: userName }});
                 if(highScoreFromServer.data < cnt){
                     let obj = {name: userName, highScore: cnt};
                     await axios.post('/api/update-high-score', obj);
@@ -150,14 +148,8 @@ async function compareFunction(numOfColor) {
                 else{
                     cnt = highScoreFromServer.data;
                 }
-            // var para1 = new URLSearchParams();
-            // para1.append("cnt", cnt);
-            // var para2 = new URLSearchParams();
-          //  let jsarray = [userName , highScore];
-          //  sessionStorage.setItem("jsArray", JSON.stringify(jsarray));
           var para = new URLSearchParams();
           para.append("highScore", cnt);
-          console.log("bbbbbbbbb"+cnt);
           location.href = "index2.html?" + para.toString();//קישור לדף המשחק  
             }
         }
@@ -172,7 +164,8 @@ async function compareFunction(numOfColor) {
                 await new Promise(r => setTimeout(r, 900));
                 document.getElementById("life").innerHTML = life + " ";
                 if (life < 0){
-                    let highScoreFromServer = await axios.get('/api/get-high-score', userName);
+                    let highScoreFromServer = await axios.get('/api/get-high-score',  { params: { userName: userName }});
+ 
                     if(highScoreFromServer.data < cnt){
                         let obj = {name: userName, highScore: cnt};
                         await axios.post('/api/update-high-score', obj);
@@ -180,14 +173,8 @@ async function compareFunction(numOfColor) {
                     else{
                         cnt = highScoreFromServer.data;
                     }
-                // var para1 = new URLSearchParams();
-                // para1.append("cnt", cnt);
-                // var para2 = new URLSearchParams();
-              //  let jsarray = [userName , highScore];
-              //  sessionStorage.setItem("jsArray", JSON.stringify(jsarray));
               var para = new URLSearchParams();
               para.append("highScore", cnt);
-              console.log("aaaaaaa"+cnt);
               location.href = "index2.html?" + para.toString();//קישור לדף המשחק  
                 } 
             }

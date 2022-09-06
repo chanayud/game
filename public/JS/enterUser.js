@@ -1,27 +1,24 @@
-
+let userName= document.getElementById("userName").value;
 
 document.getElementById("send").onclick = function () {
 
-    let userName= document.getElementById("userName").value;
-    console.log(userName);
-    // let ifExistUser= document.getElementsByTagName("userNameRadio");
+    userName= document.getElementById("userName").value;
     let ifExistUser = document.getElementById("ifExist");
     if(ifExistUser.value == "קיים"){
-    // if(document.getElementById("1").checked()){
         check_if_exist(userName, 0);
     }
-    //else if(document.getElementById("2").checked()){
     else if(ifExistUser.value == "חדש"){
-        check_if_exist(userName, 1);
+        check_if_exist( 1);
     }
 }
 
-
-async function check_if_exist(userName, num){
-    let res = await axios.get('/api/get-user-name', userName);
-    console.log(res.data);
-    if(res == "exist"){
+//--------an API call to check if the user name exists or not
+async function check_if_exist(num){
+    let userName= document.getElementById("userName").value;
+    let res = await axios.get('/api/get-user-name', { params: { userName: userName } });
+    if(res.data == "Exists"){
         if(num == 1){
+
             alert("שם המשתמש קיים כבר. נא בחר שם אחר");
         }
         else {
@@ -46,21 +43,17 @@ async function check_if_exist(userName, num){
     }
 }
 
+//----------an API call to add a new user to the server
 async function add_new_user_name(userName){
     let obj = {
         name: userName,
         highScore: 0
     }
     let res = await axios.post('/api/update-new-user', obj);
-    console.log(res);
 }
 
+//----------an API call to fet the high score of the user from the server
 async function get_high_score(userName){
-    let res = await axios.get('/api/get-high-score', userName);
-    const newDiv = document.createElement("div");
-    const newContent = document.createTextNode("השיא שצברת עד כה הוא:" + res.data);
-    newDiv.appendChild(newContent);
-
-
-
+    let res = await axios.get('/api/get-high-score', { params: { userName: userName }});
+    alert("השיא שצברת עד כה הוא: " + res.data +" נקודות");
 }
